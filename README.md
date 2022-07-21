@@ -40,13 +40,17 @@ COMMANDS:
 
 ```
    
-### `crictl.exe attach` - Attach to a running container
+### `attach`
+
+Attach to a running container
 
 ```dos
 crictl.exe attach [command options] CONTAINER-ID
 ```
 
-### `crictl.exe create` - Create a new container
+### `create`
+
+Create a new container
 
 ```dos
 crictl.exe create [command options] POD container-config.[json|yaml] pod-config.[json|yaml]
@@ -58,7 +62,9 @@ CLI範例
 crictl create $POD_ID container-config.json pod-config.json
 ```
 
-### `crictl.exe exec` - Run a command in a running container
+### `exec`
+
+Run a command in a running container
 
 ```dos
 crictl.exe exec [command options] CONTAINER-ID COMMAND [ARG...]
@@ -71,7 +77,9 @@ crictl exec $CONTAINER_ID ipconfig
 crictl exec -it $CONTAINER_ID cmd
 ```
 
-### `crictl.exe version` - Display runtime version information
+### `version`
+
+Display runtime version information
 
 ```dos
 crictl.exe version [command options] [arguments...]
@@ -87,7 +95,9 @@ RuntimeVersion:  v1.6.6
 RuntimeApiVersion:  v1
 ```
 
-### `crictl.exe images` - List images
+### `images`
+
+List images
 
 ```dos
 crictl.exe images [command options] [REPOSITORY[:TAG]]
@@ -103,7 +113,9 @@ crictl.exe images
 
 > 前二個是縮寫。
 
-### `crictl.exe inspect` - Display the status of one or more containers
+### `inspect`
+
+Display the status of one or more containers
 
 ```dos
 crictl.exe inspect [command options] CONTAINER-ID [CONTAINER-ID...]
@@ -112,10 +124,12 @@ crictl.exe inspect [command options] CONTAINER-ID [CONTAINER-ID...]
 CLI範例
 
 ```dos
-crictl.exe inspect $CONTAINER-ID
+crictl.exe inspect $CONTAINER_ID
 ```
 
-### `crictl.exe inspecti` - Return the status of one or more images
+### `inspecti`
+
+Return the status of one or more images
 
 ```dos
 crictl.exe inspecti [command options] IMAGE-ID [IMAGE-ID...]
@@ -128,7 +142,9 @@ crictl.exe img
 crictl.exe inspecti 2a67292b6e8ba e3acc2fa6fe12
 ```
 
-### `crictl.exe imagefsinfo` - Return image filesystem info
+### `imagefsinfo`
+
+Return image filesystem info
 
 ```dos
 crictl.exe imagefsinfo [command options] [arguments...]
@@ -142,7 +158,9 @@ crictl.exe imagefsinfo e3acc2fa6fe12
 
 > `inspecti`顯示的資訊與`imagefsinfo`不同哦。
 
-### `crictl.exe inspectp` - Display the status of one or more pods
+### `inspectp`
+
+Display the status of one or more pods
 
 ```dos
 crictl.exe inspectp [command options] POD-ID [POD-ID...]
@@ -154,7 +172,9 @@ CLI範例
 crictl.exe inspectp $POD_ID
 ```
 
-### `crictl.exe logs` - Fetch the logs of a container
+### `logs`
+
+Fetch the logs of a container
 
 ```dos
 crictl.exe logs [command options] CONTAINER-ID
@@ -166,7 +186,9 @@ CLI範例
 crictl.exe logs $CONTAINER_ID
 ```
 
-### `crictl.exe port-forward` - Forward local port to a pod
+### `port-forward`
+
+Forward local port to a pod
 
 ```dos
 crictl.exe port-forward [command options] POD-ID [LOCAL_PORT:]REMOTE_PORT
@@ -178,7 +200,9 @@ CLI範例
 crictl.exe port-forward $POD_ID 8080:80
 ```
 
-### `crictl.exe ps` - List containers
+### `ps`
+
+List containers
 
 ```dos
 crictl.exe ps [command options] [arguments...]
@@ -193,7 +217,9 @@ crictl.exe ps -a
 
 > 還有許多過濾用的參數。當容器多的時候，再查詢使用即可。
 
-### `crictl.exe pull` - Pull an image from a registry
+### `pull`
+
+Pull an image from a registry
 
 ```dos
 crictl.exe pull [command options] NAME[:TAG|@DIGEST]
@@ -211,7 +237,7 @@ crictl.exe pull k8s.gcr.io/pause:3.7
 ```
 
 > 如果像存取Azure ACR需要憑證，就要帶認證參數。<br>
-> `crictl.exe pull --creds USERNAME[:PASSWORD] youregistry.azurecr.io/blabla:tlsc2022`
+> `crictl.exe pull --creds USERNAME[:PASSWORD] youregistry.azurecr.io/blabla:latest`
 
 Note：
 
@@ -224,7 +250,9 @@ ctr -n="k8s.io" images import .\pause37.tar
 crictl images
 ```
 
-### `crictl.exe run` - Run a new container inside a sandbox
+### `run`
+
+Run a new container inside a sandbox
 
 ```dos
 crictl.exe run [command options] container-config.[json|yaml] pod-config.[json|yaml]
@@ -241,7 +269,9 @@ crictl.exe ps
 * `run` 執行之後顯示的是 CONTAINER ID。
 * `run` 等於把 `runp`、`create`、`start` 整合在一起。
 
-### `crictl.exe runp` - Run a new pod
+### `runp`
+
+Run a new pod
 
 ```dos
 crictl.exe runp [command options] pod-config.[json|yaml]
@@ -257,7 +287,9 @@ crictl start $CONTAINER_ID
 
 > 一般會分開執行`runp`、`create`、`start` 是為了取得各自的ID，方便後續 CLI 操作執行。
 
-### `crictl.exe rm` - Remove one or more containers
+### `rm`
+
+Remove one or more containers
 
 ```dos
 crictl.exe rm [command options] CONTAINER-ID [CONTAINER-ID...]
@@ -275,7 +307,9 @@ crictl.exe stop 61837f3d17b3b
 crictl.exe rm 61837f3d17b3b
 ```
 
-### `crictl.exe rmi` - Remove one or more images
+### `rmi`
+
+Remove one or more images
 
 ```dos
 crictl.exe rmi [command options] IMAGE-ID [IMAGE-ID...]
@@ -294,7 +328,9 @@ crictl.exe rmi --prune
 
 > 如果系統目前沒在執行中的容器，那麼`--prune`等於清除所有映像檔。
 
-### `crictl.exe rmp` - Remove one or more pods
+### `rmp`
+
+Remove one or more pods
 
 ```dos
 crictl.exe rmp [command options] POD-ID [POD-ID...]
@@ -318,7 +354,9 @@ PS C:\> crictl.exe rmp -a
 Removed sandbox 46c169974805cb12f3cfedc34e48444c6710e118af93b42ce303ae3cbbd8d304
 ```
 
-### `crictl.exe pods` - List pods
+### `pods`
+
+List pods
 
 ```dos
 crictl.exe pods [command options] [arguments...]
@@ -330,7 +368,9 @@ CLI範例
 crictl.exe pods
 ```
 
-### `crictl.exe start` - Start one or more created containers
+### `start`
+
+Start one or more created containers
 
 ```dos
 crictl.exe start [command options] CONTAINER-ID [CONTAINER-ID...]
@@ -342,7 +382,9 @@ CLI範例
 crictl.exe start $CONTAINER_ID
 ```
 
-### `crictl.exe info` - Display information of the container runtime
+### `info`
+
+Display information of the container runtime
 
 ```dos
 crictl.exe info [command options] [arguments...]
@@ -354,7 +396,9 @@ CLI範例
 crictl.exe info
 ```
 
-### `crictl.exe stop` - Stop one or more running containers
+### `stop`
+
+Stop one or more running containers
 
 ```dos
 crictl.exe stop [command options] CONTAINER-ID [CONTAINER-ID...]
@@ -366,7 +410,9 @@ CLI範例
 crictl.exe stop $CONTAINER_ID
 ```
 
-### `crictl.exe stopp` - Stop one or more running pods
+### `stopp`
+
+Stop one or more running pods
 
 ```dos
 crictl.exe stopp [command options] POD-ID [POD-ID...]
@@ -378,7 +424,9 @@ CLI範例
 crictl.exe stopp $POD_ID
 ```
 
-### `crictl.exe update` - Update one or more running containers
+### `update`
+
+Update one or more running containers
 
 ```dos
 crictl.exe update [command options] CONTAINER-ID [CONTAINER-ID...]
@@ -400,13 +448,15 @@ CLI範例
 crictl.exe update --cpu-count 1 $CONTAINER_ID
 ```
 
-### `crictl.exe config` - Get and set crictl client configuration options
+### `config`
+
+Get and set crictl client configuration options
 
 ```dos
 crictl.exe config [command options] [<crictl options>]
 ```
 
-通常會設定在 `~\.crictl\crictl.yaml`。
+Windows 通常會設定在 `~\.crictl\crictl.yaml`。
 
 ```dos
 mkdir -Force "$home\.crictl"
@@ -421,7 +471,9 @@ timeout: 10
 
 > 如果你是第一次在`crictl.exe`執行建立Pod的工作，它會在背景下載`k8s.gcr.io/pause`，而這個下載作業會受到上面的`timeout`參數影響。因此建議第一次執行可以加大至`90`~`120`。等正常下載完成後再縮減回來即可。
 
-### `crictl.exe stats` - List container(s) resource usage statistics
+### `stats`
+
+List container(s) resource usage statistics
 
 ```dos
 crictl.exe stats [command options] [ID]
@@ -435,7 +487,9 @@ crictl.exe stats -a
 crictl.exe stats $CONTAINER_ID
 ```
 
-### `crictl.exe statsp` - List pod resource usage statistics
+### `statsp`
+
+List pod resource usage statistics
 
 ```dos
 crictl.exe statsp [command options] [ID]
@@ -448,10 +502,12 @@ crictl.exe statsp
 crictl.exe statsp $POD_ID
 ```
 
-### `crictl.exe completion` - Output shell completion code
+### `completion`
+
+Output shell completion code
 
 ```dos
 crictl.exe completion [command options] SHELL
 ```
 
-> 提供Shell自動完成，支援bash、zsh、fish，Windows不支援。
+> 提供Shell自動完成功能，支援bash、zsh、fish，Windows不支援。
